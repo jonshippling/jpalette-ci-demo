@@ -14,9 +14,9 @@ public class ColorRgb implements Color
 	@Override
 	public ColorCymk toCymk()
 	{
-		double rP = r/255;
-		double gP = g/255;
-		double bP = b/255;
+		double rP = (double) r/255;
+		double gP = (double) g/255;
+		double bP = (double) b/255;
 		
 		double k = 1-Util.varMax(rP,gP,bP);
 		double c = (1-rP-k) / (1-k);
@@ -29,11 +29,6 @@ public class ColorRgb implements Color
 	@Override
 	public ColorHex toHex() throws ColorException
 	{
-		/* Implement this */
-
-		/*
-		 * Hint: Integer.toHexString()
-		 */
 
 		String red,green,blue;
 		red = Integer.toHexString(r);

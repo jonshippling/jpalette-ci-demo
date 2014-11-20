@@ -12,36 +12,51 @@ public class ColorCymk implements Color
 	 */
 	public ColorCymk(double c, double y, double m, double k)
 	{
-		/* Implement this */
-
-		this.c = 0;
-		this.y = 0;
-		this.m = 0;
-		this.k = 0;
+		this.c = c;
+		this.y = y;
+		this.m = m;
+		this.k = k;
 	}
 
 	@Override
 	public ColorCymk toCymk()
 	{
-		/* Implement this */
-
-		return new ColorCymk(0, 0, 0, 0);
+		return new ColorCymk(c,y,m,k);
 	}
 
 	@Override
 	public ColorHex toHex() throws ColorException
 	{
-		/* Implement this */
-
-		return new ColorHex("000000");
+		String red,green,blue;
+		int R,G,B;
+		R = (int) (255 * (1-c) * (1-k));
+		G = (int) (255 * (1-m) * (1-k));
+		B = (int) (255 * (1-y) * (1-k));
+		
+		red = Integer.toHexString(R);
+		green = Integer.toHexString(G);
+		blue = Integer.toHexString(B);
+		
+		return new ColorHex(red+green+blue);
 	}
 
+	/*
+	 The R,G,B values are given in the range of 0..255.
+The red (R) color is calculated from the cyan (C) and black (K) colors:
+R = 255 × (1-C) × (1-K)
+The green color (G) is calculated from the magenta (M) and black (K) colors:
+G = 255 × (1-M) × (1-K)
+The blue color (B) is calculated from the yellow (Y) and black (K) colors:
+B = 255 × (1-Y) × (1-K)
+	 */
 	@Override
 	public ColorRgb toRgb()
 	{
-		/* Implement this */
-
-		return new ColorRgb(0, 0, 0);
+		int R,G,B;
+		R = (int) (255 * (1-c) * (1-k));
+		G = (int) (255 * (1-m) * (1-k));
+		B = (int) (255 * (1-y) * (1-k));
+		return new ColorRgb(R,G,B);
 	}
 
 	@Override
