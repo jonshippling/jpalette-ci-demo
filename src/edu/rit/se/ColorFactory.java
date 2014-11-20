@@ -5,7 +5,7 @@ package edu.rit.se;
  * This class determines what type of color a string represents, and then parses
  * that string into a new instance of that color.
  * </p>
- * 
+ *  test commit
  * @author Steven Kroh (skk8768)
  */
 public class ColorFactory
