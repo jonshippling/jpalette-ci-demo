@@ -41,8 +41,8 @@ public class ColorRgbTest
 	@Test
 	public void testToCymk()
 	{
-		ColorRgb rgb = new ColorRgb(255, 255, 255);
-		ColorCymk cymk = new ColorCymk(0.0, 0.0, 0.0, 0.0);
+		ColorRgb rgb = new ColorRgb(50, 100, 2);
+		ColorCymk cymk = new ColorCymk(0.5, 0.0, 0.98, 0.608);
 
 		assertEquals(cymk, rgb.toCymk());
 

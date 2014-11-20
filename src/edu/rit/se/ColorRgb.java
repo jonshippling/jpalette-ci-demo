@@ -14,18 +14,16 @@ public class ColorRgb implements Color
 	@Override
 	public ColorCymk toCymk()
 	{
-		/* Implement this */
+		double rP = r/255;
+		double gP = g/255;
+		double bP = b/255;
+		
+		double k = 1-Util.varMax(rP,gP,bP);
+		double c = (1-rP-k) / (1-k);
+		double m = (1-gP-k) / (1-k);
+		double y = (1-bP-k) / (1-k);
 
-		/*
-		 * Hint: when dividing two integers, you need to cast the
-		 * divisor and dividend to floating-point numbers (doubles)
-		 */
-
-		/*
-		 * Hint: use Util.varMax() where max() is used in the formula
-		 */
-
-		return new ColorCymk(0, 0, 0, 0);
+		return new ColorCymk(c,m,y,k);
 	}
 
 	@Override
@@ -37,15 +35,18 @@ public class ColorRgb implements Color
 		 * Hint: Integer.toHexString()
 		 */
 
-		return new ColorHex("000000");
+		String red,green,blue;
+		red = Integer.toHexString(r);
+		green = Integer.toHexString(g);
+		blue = Integer.toHexString(b);
+		
+		return new ColorHex(red+green+blue);
 	}
 
 	@Override
 	public ColorRgb toRgb()
 	{
-		/* Implement this */
-
-		return new ColorRgb(0, 0, 0);
+		return new ColorRgb(r, g, b);
 	}
 
 	@Override
