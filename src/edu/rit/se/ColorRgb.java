@@ -29,13 +29,13 @@ public class ColorRgb implements Color
 	@Override
 	public ColorHex toHex() throws ColorException
 	{
+		String hex = new String();
+		hex += Integer.toHexString(r);
+		hex += Integer.toHexString(g);
+		hex += Integer.toHexString(b);
+		hex = hex.toUpperCase();
 
-		String red,green,blue;
-		red = Integer.toHexString(r);
-		green = Integer.toHexString(g);
-		blue = Integer.toHexString(b);
-		
-		return new ColorHex(red+green+blue);
+		return new ColorHex(hex);
 	}
 
 	@Override

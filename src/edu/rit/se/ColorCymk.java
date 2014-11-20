@@ -33,11 +33,13 @@ public class ColorCymk implements Color
 		G = (int) (255 * (1-m) * (1-k));
 		B = (int) (255 * (1-y) * (1-k));
 		
-		red = Integer.toHexString(R);
-		green = Integer.toHexString(G);
-		blue = Integer.toHexString(B);
-		
-		return new ColorHex(red+green+blue);
+		String hex = new String();
+		hex += Integer.toHexString(R);
+		hex += Integer.toHexString(G);
+		hex += Integer.toHexString(B);
+		hex = hex.toUpperCase();
+
+		return new ColorHex(hex);
 	}
 
 	/*

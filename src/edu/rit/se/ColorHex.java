@@ -18,31 +18,54 @@ public class ColorHex implements Color
 		 * can catch and then re-throw as a ColorException.
 		 */
 
-		this.hex = "";
+		this.hex = hex;
 	}
 
 	@Override
 	public ColorCymk toCymk()
 	{
-		/* Implement this */
+		String sr = hex.substring(0, 2);
+		String sg = hex.substring(2, 4);
+		String sb = hex.substring(4, 6);
 
-		return new ColorCymk(0, 0, 0, 0);
+		int ir, ig, ib;
+
+		ir = Integer.parseInt(sr, 16);
+		ig = Integer.parseInt(sg, 16);
+		ib = Integer.parseInt(sb, 16);
+		
+		double rP = (double) ir/255;
+		double gP = (double) ig/255;
+		double bP = (double) ib/255;
+		
+		double k = 1-Util.varMax(rP,gP,bP);
+		double c = (1-rP-k) / (1-k);
+		double m = (1-gP-k) / (1-k);
+		double y = (1-bP-k) / (1-k);
+
+		return new ColorCymk(c,m,y,k);
 	}
 
 	@Override
 	public ColorHex toHex() throws ColorException
 	{
-		/* Implement this */
-
-		return new ColorHex("000000");
+		return new ColorHex(hex);
 	}
 
 	@Override
-	public ColorRgb toRgb()
+	public ColorRgb toRgb() 
 	{
-		/* Implement this */
+		String sr = hex.substring(0, 2);
+		String sg = hex.substring(2, 4);
+		String sb = hex.substring(4, 6);
 
-		return new ColorRgb(0, 0, 0);
+		int ir, ig, ib;
+
+		ir = Integer.parseInt(sr, 16);
+		ig = Integer.parseInt(sg, 16);
+		ib = Integer.parseInt(sb, 16);
+
+		return new ColorRgb(ir, ig, ib);
 	}
 
 	@Override
